@@ -16,3 +16,117 @@ datos<-read_excel(ruta_excel)
 # ver los datos
 View(datos)
 names(datos)
+
+#=========================================================================================================
+# Proyecto Probabilidad y estadÃ­stica 1
+#=========================================================================================================
+
+#se carga la base de datos y se lee
+library(readxl)
+datos_proyecto <- read_excel("datos proyecto.xlsx")
+View(datos_proyecto)
+
+
+#-------------
+#ObtenciÃ³n de datos por columnas de datos
+
+nombre <- datos_proyecto[,2]
+equipo <- datos_proyecto[,3]
+edad <- datos_proyecto[,4]
+estatura <- datos_proyecto[,5]
+peso <- datos_proyecto[,6]
+universidad <- datos_proyecto[,7]
+pais <- datos_proyecto[,8]
+
+draft_year <- datos_proyecto[,9]
+draft_round <- datos_proyecto[,10]
+draft_number <- datos_proyecto[,11]
+
+gp <- datos_proyecto[,12]
+pts <- datos_proyecto[,13]
+reb <- datos_proyecto[,14]
+ast <- datos_proyecto[,15]
+
+net_rating <- datos_proyecto[,16]
+oreb_pct <- datos_proyecto[,17]
+dreb_pct <- datos_proyecto[,18]
+usg_pct <- datos_proyecto[,19]
+ts_pct <- datos_proyecto[,20]
+ast_pct <- datos_proyecto[,21]
+
+season <- datos_proyecto[,22]
+
+#-------------------------------------------
+#Análisis estadístico
+
+#resumen
+summary(datos_proyecto)
+
+#tablas
+table(datos_proyecto$team_abbreviation, datos_proyecto$age)
+
+options(max.print=999999)
+table(datos_proyecto$team_abbreviation, datos_proyecto$college)
+
+
+
+#----------------------------------
+#diagramas de barras
+#edad
+barplot(table(edad))
+
+
+
+#---------------------------------
+#tortas
+#torta de nacionalidades
+pie(table(datos_proyecto$country))
+
+#----------------------------------
+#histogramas
+#peso
+hist(datos_proyecto$player_weight)
+
+#estatura
+hist(datos_proyecto$player_height)
+
+#pts
+hist(datos_proyecto$pts)
+
+#reb
+hist(datos_proyecto$reb)
+
+#asis
+hist(datos_proyecto$ast)
+
+#net-rating
+hist(datos_proyecto$`net_rating(eficienia def-att)`)
+
+#oreb-pct
+hist(datos_proyecto$`oreb_pct rebs ofensivos`)
+
+#dreb-pct
+hist(datos_proyecto$`dreb_pct rebs def`)
+
+#usg-pct
+hist(datos_proyecto$`usg_pct uso`)
+
+#ts-pct
+hist(datos_proyecto$`ts_pct tiro real`)
+
+#ast-pct
+hist(datos_proyecto$`ast_pct porcentaje asis`)
+
+#----------------------------------
+#Plot
+
+#altura-peso
+plot(datos_proyecto$player_height, datos_proyecto$player_weight)
+
+#plot edad - patidos jugados
+plot(datos_proyecto$age, datos_proyecto$`gp-partidos jugados`, xlab="edad", ylab="partidos jugados")
+
+#
+plot(datos_proyecto$age, datos_proyecto$pts)
+
+
